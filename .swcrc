@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "module": {
+    "type": "commonjs"
+  },
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    },
+    "target": "es2017",
+    "paths": {
+      "@controllers": ["./src/http/controllers"],
+      "@DTOs": ["./src/DTOs"],
+      "@data-access": ["./src/data-access/index.ts"],
+      "@database": ["./src/lib/prisma.ts"],
+      "@use-cases": ["./src/use-cases/index.ts"]
+    },
+    "baseUrl": "./"
+  },
+  "minify": true
+}
