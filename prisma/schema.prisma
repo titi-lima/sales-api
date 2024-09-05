@@ -11,3 +11,101 @@ generator client {
 generator dbml {
   provider = "prisma-dbml-generator"
 }
+
+enum USER_TYPE {
+  ADMIN
+  CLIENT
+}
+
+model User {
+  id       String    @id @default(cuid())
+  email    String    @unique
+  password String
+  type     USER_TYPE @default(CLIENT)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  Client    Client?
+
+  @@map("users")
+}
+
+enum CLIENT_STATUS {
+  ACTIVE
+  INACTIVE
+}
+
+model Client {
+  id      String        @id @default(cuid())
+  name    String
+  contact String
+  address String
+  status  CLIENT_STATUS @default(ACTIVE)
+
+  userId String @unique @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  order Order[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  name        String
+  description String
+  price       Decimal @db.Money
+  quantity    Int
+
+  orderProducts OrderProduct[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("products")
+}
+
+enum ORDER_STATUS {
+  PENDING
+  COMPLETED
+}
+
+model Order {
+  id         String       @id @default(cuid())
+  status     ORDER_STATUS @default(PENDING)
+  totalPrice Decimal      @db.Money
+
+  clientId      String?
+  client        Client?        @relation(fields: [clientId], references: [id], onDelete: SetNull)
+  orderProducts OrderProduct[]
+
+  orderedAt DateTime @default(now()) @map("ordered_at")
+
+  @@map("orders")
+}
+
+model OrderProduct {
+  id        String  @id @default(cuid())
+  quantity  Int
+  unitPrice Decimal @map("unit_price") @db.Money
+  subtotal  Decimal @db.Money
+
+  productId String  @map("product_id")
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderId   String  @map("order_id")
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("order_products")
+}
+
+model SalesReport {
+  id               String   @id @default(cuid())
+  beginDate        DateTime @map("begin_date")
+  endDate          DateTime @map("end_date")
+  totalPrice       Decimal  @map("total_price") @db.Money
+  productsQuantity Int      @map("products_quantity")
+  // url has been omitted as I do not plan on making the sales report public, so I will derive it from the id.
+
+  @@map("sales_reports")
+}
