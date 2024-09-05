@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "swc src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "start": "npm run build && node dist/server.js",
+    "start": "npm run build && node dist/src/server.js",
     "dev": "concurrently \"ts-node-dev --poll --exit-child -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts\" \"prisma generate --watch\"",
     "prod": "npm run migration:deploy && npm run start",
     "migration": "cross-env DATABASE_HOST='localhost' prisma migrate dev",

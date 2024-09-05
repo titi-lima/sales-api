@@ -19,11 +19,10 @@ jobs:
           chmod 600 /home/runner/.ssh/github_actions
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add /home/runner/.ssh/github_actions
-          ssh -i /home/runner/.ssh/github_actions -o StrictHostKeyChecking=no root@${{secrets.HOST}} 'bash -s' < .github/cleanup.sh
+          ssh -i /home/runner/.ssh/github_actions -o StrictHostKeyChecking=no ubuntu@${{secrets.HOST}} 'bash -s' < .github/cleanup.sh
       - name: Dokku deploy
         uses: titi-lima/dokku-github-action@v1
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           HOST: ${{ secrets.HOST }}
           PROJECT: server
