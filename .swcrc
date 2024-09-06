@@ -12,7 +12,7 @@
       "@controllers": ["./src/http/controllers"],
       "@DTOs": ["./src/DTOs"],
       "@data-access": ["./src/data-access/index.ts"],
-      "@database": ["./src/lib/prisma.ts"],
+      "@database": ["./src/lib/prisma/db.ts"],
       "@use-cases": ["./src/use-cases/index.ts"]
     },
     "baseUrl": "./"

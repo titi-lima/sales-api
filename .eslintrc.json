@@ -32,7 +32,7 @@
         ["@controllers", "./src/controllers"],
         ["@DTOs", "./src/DTOs"],
         ["@data-access", "./src/data-access"],
-        ["@database", "./src/lib/prisma.ts"],
+        ["@database", "./src/lib/prisma/db.ts"],
         ["@use-cases", "./src/use-cases"]
       ]
     }

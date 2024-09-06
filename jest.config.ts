@@ -90,7 +90,7 @@ export default {
     '@controllers': '<rootDir>/src/http/controllers/index.ts',
     '@data-access': '<rootDir>/src/data-access/index.ts',
     '@DTOs': '<rootDir>/src/DTOs/index.ts',
-    '@database': '<rootDir>/src/lib/prisma.ts',
+    '@database': '<rootDir>/src/lib/prisma/db.ts',
     '@use-cases': '<rootDir>/src/use-cases/index.ts',
   },
 

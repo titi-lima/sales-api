@@ -20,8 +20,8 @@
     "paths": {
       "@controllers": ["src/http/controllers"],
       "@DTOs": ["./src/DTOs"],
-      "@repositories": ["src/data-access"],
-      "@database": ["src/lib/prisma.ts"],
+      "@data-access": ["src/data-access"],
+      "@database": ["src/lib/prisma/db.ts"],
       "@use-cases": ["src/use-cases"]
     }
   },
