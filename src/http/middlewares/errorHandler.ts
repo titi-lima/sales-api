@@ -10,7 +10,7 @@ export const errorHandler = (
   if (!error) return next();
 
   res.locals.status = error.status || 500;
-  res.locals.message = error.message || 'Algo deu errado.';
+  res.locals.message = error.message || 'Internal server error.';
 
   return next();
 };
