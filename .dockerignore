@@ -7,7 +7,7 @@ docker-compose.yml
 .env*
 .eslint*
 *.md
-jest.config.ts
+# jest.config.ts
 .prettierrc
 dist
 logs

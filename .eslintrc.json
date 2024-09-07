@@ -29,10 +29,10 @@
     "import/resolver": {
       "typescript": {},
       "alias": [
-        ["@controllers", "./src/controllers"],
+        ["@controllers", "./src/infra/http/controllers"],
         ["@DTOs", "./src/DTOs"],
-        ["@data-access", "./src/data-access"],
-        ["@database", "./src/lib/prisma.ts"],
+        ["@prisma-repositories", "./src/infra/data-access/prisma/repositories"],
+        ["@database", "./src/lib/prisma/db.ts"],
         ["@use-cases", "./src/use-cases"]
       ]
     }

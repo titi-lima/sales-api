@@ -14,13 +14,15 @@ COPY package.json pnpm-lock.yam[l] ./
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 
-COPY . .
+COPY prisma ./prisma
 
 RUN pnpm generate
 
-COPY --chown=node:node . .
+RUN chown -R node:node /home/node/app/node_modules/.pnpm
 
-RUN chown -R node:node /home/node/app/node_modules/.prisma
+COPY . .
+
+COPY --chown=node:node . .
 
 USER node
 

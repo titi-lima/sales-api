@@ -1,18 +1,18 @@
-import express, { type Express } from 'express';
+import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import expressWinston from 'express-winston';
 import helmet from 'helmet';
-import routes from './routes';
+import routes from './infra/http/routes';
 import swaggerDocument from './docs';
 import {
   requestHandler,
   errorHandler,
   requestLogger,
-} from './http/middlewares';
+} from './infra/http/middlewares';
 
-const app: Express = express();
+const app = express();
 
 app.use(helmet());
 

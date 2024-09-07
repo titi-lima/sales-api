@@ -1,8 +1,8 @@
 import 'dotenv/config';
 
-import './env';
+import './config/env';
 import app from './app';
-import 'src/lib/prisma';
+import 'src/lib/prisma/db';
 
 app.listen(process.env.SERVER_PORT || 3001, () => {
   console.log(
