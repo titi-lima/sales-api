@@ -89,7 +89,7 @@ export default {
   moduleNameMapper: {
     '@controllers': '<rootDir>/src/http/infra/controllers/index.ts',
     '@prisma-repositories':
-      '<rootDir>/src/data-access/prisma/repositories/index.ts',
+      '<rootDir>/src/infra/data-access/prisma/repositories/index.ts',
     '@DTOs': '<rootDir>/src/DTOs/index.ts',
     '@database': '<rootDir>/src/lib/prisma/db.ts',
     '@use-cases': '<rootDir>/src/use-cases/index.ts',

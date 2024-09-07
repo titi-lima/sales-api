@@ -11,7 +11,7 @@
     "paths": {
       "@controllers": ["./src/infra/http/controllers"],
       "@DTOs": ["./src/DTOs"],
-      "@prisma-repositories": ["./src/data-access/prisma/repositories"],
+      "@prisma-repositories": ["./src/infra/data-access/prisma/repositories"],
       "@database": ["./src/lib/prisma/db.ts"],
       "@use-cases": ["./src/use-cases/index.ts"]
     },
