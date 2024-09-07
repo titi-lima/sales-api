@@ -12,6 +12,7 @@ export class UserController {
 
     res.locals = {
       message: 'User created successfully.',
+      status: 201,
       data: user,
     };
 

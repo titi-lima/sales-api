@@ -1,5 +1,9 @@
+import type { OpenAPIV3_1 } from 'openapi-types';
+import { userSchema } from './schemas/user';
+import { userPath } from './paths/users';
+
 export default {
-  openapi: '3.0.0',
+  openapi: '3.1.0',
   info: {
     title: 'Sales API',
     description: 'API para o desenvolvimento de uma aplicação de vendas',
@@ -12,11 +16,11 @@ export default {
     },
   ],
   paths: {
-    // paths go here!
+    ...userPath,
   },
   components: {
     schemas: {
-      // and schemas go here!
+      userSchema,
     },
     securitySchemes: {
       bearerAuth: {
@@ -29,4 +33,4 @@ export default {
       bearerAuth: [],
     },
   },
-};
+} as OpenAPIV3_1.Document;
