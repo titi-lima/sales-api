@@ -1,11 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 
-export const db = new PrismaClient({
+export const prisma = new PrismaClient({
   log: process.env.NODE_ENV !== 'production' ? ['warn', 'error'] : [],
   errorFormat: process.env.NODE_ENV !== 'production' ? 'pretty' : 'colorless',
 });
 
-db.$connect()
+prisma
+  .$connect()
   .then(() => {
     console.log('📦 Successfully connected with database');
   })

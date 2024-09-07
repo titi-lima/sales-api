@@ -9,9 +9,9 @@
     },
     "target": "es2017",
     "paths": {
-      "@controllers": ["./src/http/controllers"],
+      "@controllers": ["./src/infra/http/controllers"],
       "@DTOs": ["./src/DTOs"],
-      "@data-access": ["./src/data-access/index.ts"],
+      "@prisma-repositories": ["./src/data-access/prisma/repositories"],
       "@database": ["./src/lib/prisma/db.ts"],
       "@use-cases": ["./src/use-cases/index.ts"]
     },

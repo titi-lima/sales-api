@@ -4,13 +4,13 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import expressWinston from 'express-winston';
 import helmet from 'helmet';
-import routes from './http/routes';
+import routes from './infra/http/routes';
 import swaggerDocument from './docs';
 import {
   requestHandler,
   errorHandler,
   requestLogger,
-} from './http/middlewares';
+} from './infra/http/middlewares';
 
 const app = express();
 

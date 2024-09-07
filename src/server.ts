@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-import './env';
+import './config/env';
 import app from './app';
 import 'src/lib/prisma/db';
 

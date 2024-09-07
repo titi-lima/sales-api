@@ -87,8 +87,9 @@ export default {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '@controllers': '<rootDir>/src/http/controllers/index.ts',
-    '@data-access': '<rootDir>/src/data-access/index.ts',
+    '@controllers': '<rootDir>/src/http/infra/controllers/index.ts',
+    '@prisma-repositories':
+      '<rootDir>/src/data-access/prisma/repositories/index.ts',
     '@DTOs': '<rootDir>/src/DTOs/index.ts',
     '@database': '<rootDir>/src/lib/prisma/db.ts',
     '@use-cases': '<rootDir>/src/use-cases/index.ts',
