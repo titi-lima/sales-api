@@ -4,18 +4,22 @@ import { makeCreateUserUseCase } from 'src/application/factories/user/create';
 
 export class UserController {
   static async create(req: Request, res: Response, next: NextFunction) {
-    const data = CreateUserDTO.parse(req.body);
+    try {
+      const data = CreateUserDTO.parse(req.body);
 
-    const createUseCase = makeCreateUserUseCase();
+      const createUseCase = makeCreateUserUseCase();
 
-    const user = await createUseCase.execute(data);
+      const user = await createUseCase.execute(data);
 
-    res.locals = {
-      message: 'User created successfully.',
-      status: 201,
-      data: user,
-    };
+      res.locals = {
+        message: 'User created successfully.',
+        status: 201,
+        data: user,
+      };
 
-    return next();
+      return next();
+    } catch (error) {
+      return next(error);
+    }
   }
 }

@@ -1,10 +1,8 @@
 import type { OpenAPIV3_1 } from 'openapi-types';
 import { createUserOpenApiSchema } from '../schemas/user';
 
-console.log(createUserOpenApiSchema);
-
 export const userPath: OpenAPIV3_1.Document['paths'] = {
-  '/users/create': {
+  '/users': {
     post: {
       summary: 'Create a new user.',
       description: 'Creates a new user.',

@@ -33,13 +33,6 @@ export class PrismaUserRepository implements IUserRepository {
       where: {
         email,
       },
-      select: {
-        id: true,
-        email: true,
-        type: true,
-        createdAt: true,
-        updatedAt: true,
-      },
     });
   }
 }

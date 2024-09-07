@@ -37,17 +37,17 @@ if (process.env.NODE_ENV !== 'production') {
           let requestBody;
           let responseBody;
           try {
-            requestBody = JSON.stringify(meta.req.body, null, 2);
+            requestBody = JSON.stringify(meta?.req?.body, null, 2);
           } catch (e) {
-            requestBody = meta.req?.body;
+            requestBody = meta?.req?.body;
           }
           try {
-            responseBody = JSON.stringify(meta.res.body, null, 2);
+            responseBody = JSON.stringify(meta?.res?.body, null, 2);
           } catch (e) {
-            responseBody = meta.res?.body;
+            responseBody = meta?.res?.body;
           }
 
-          const statusCode = meta.res?.statusCode;
+          const statusCode = meta?.res?.statusCode;
 
           return `[${timestamp}] ${message} - ${statusCode}\n\n${
             requestBody ? `Request Body: ${requestBody}\n` : ''

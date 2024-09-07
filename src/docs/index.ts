@@ -1,4 +1,5 @@
 import type { OpenAPIV3_1 } from 'openapi-types';
+import { sessionPath } from 'src/docs/paths/sessions';
 import { userSchema } from './schemas/user';
 import { userPath } from './paths/users';
 
@@ -16,6 +17,7 @@ export default {
     },
   ],
   paths: {
+    ...sessionPath,
     ...userPath,
   },
   components: {
