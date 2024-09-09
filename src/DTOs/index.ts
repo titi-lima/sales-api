@@ -4,3 +4,8 @@ export * from './user/delete';
 export * from './user/find-all';
 export * from './user/find-by-id';
 export * from './session/login';
+export * from './product/create';
+export * from './product/update';
+export * from './product/delete';
+export * from './product/find-all';
+export * from './product/find-by-id';
