@@ -1,5 +1,5 @@
 import { generateSchema } from '@anatine/zod-openapi';
-import { CreateUserDTO } from '@DTOs';
+import { CreateUserDTO, UpdateUserDTO } from '@DTOs';
 import type { OpenAPIV3_1 } from 'openapi-types';
 
 export const userSchema: OpenAPIV3_1.SchemaObject = {
@@ -38,3 +38,4 @@ export const userSchema: OpenAPIV3_1.SchemaObject = {
 };
 
 export const createUserOpenApiSchema = generateSchema(CreateUserDTO);
+export const updateUserOpenApiSchema = generateSchema(UpdateUserDTO);

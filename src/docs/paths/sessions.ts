@@ -11,7 +11,13 @@ export const sessionPath: OpenAPIV3_1.Document['paths'] = {
         required: true,
         content: {
           'application/json': {
-            schema: sessionOpenApiSchema as any,
+            schema: {
+              ...(sessionOpenApiSchema as any),
+              example: {
+                email: 'titisau@gmail.com',
+                password: 'Tiago123',
+              },
+            },
           },
         },
         description: 'Credentials',
