@@ -15,30 +15,30 @@ export const createAndAuthenticateAdmin = async (admin?: {
   email: string;
   password: string;
 }): Promise<Return> => {
-  const userToCreate = {
-    email: 'titisau+admin@gmail.com',
+  const adminToCreate = {
+    email: 'titisauadmin@gmail.com',
     password: 'SantaCruz@123',
   };
   if (admin) {
-    userToCreate.email = admin.email;
-    userToCreate.password = admin.password;
+    adminToCreate.email = admin.email;
+    adminToCreate.password = admin.password;
   }
   const user = await prisma.user.create({
     data: {
-      email: userToCreate.email,
-      password: await hashPassword(userToCreate.password),
+      email: adminToCreate.email,
+      password: await hashPassword(adminToCreate.password),
       type: 'ADMIN',
     },
   });
 
   const response = await request(app).post('/sessions').send({
-    email: userToCreate.email,
-    password: userToCreate.password,
+    email: adminToCreate.email,
+    password: adminToCreate.password,
   });
 
   return {
-    email: userToCreate.email,
-    password: userToCreate.password,
+    email: adminToCreate.email,
+    password: adminToCreate.password,
     id: user.id,
     accessToken: response.body.data,
   };
