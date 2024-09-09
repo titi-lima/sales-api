@@ -63,6 +63,7 @@ model Product {
 }
 
 enum ORDER_STATUS {
+  CART
   RECEIVED
   PENDING
   SHIPPED
@@ -78,7 +79,7 @@ model Order {
   client        Client?        @relation(fields: [clientId], references: [id], onDelete: SetNull)
   orderProducts OrderProduct[]
 
-  orderedAt DateTime @default(now()) @map("ordered_at")
+  orderedAt DateTime? @map("ordered_at")
 
   @@map("orders")
 }
