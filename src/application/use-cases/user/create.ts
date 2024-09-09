@@ -1,5 +1,5 @@
 import { type ICreateUserDTO } from '@DTOs';
-import { UserAlreadyExistsError } from 'src/errors/UserAlreadyExists';
+import { UserAlreadyExistsError } from 'src/errors';
 import type { IUserRepository } from 'src/infra/data-access/interfaces/UserRepository';
 
 export class CreateUserUseCase {

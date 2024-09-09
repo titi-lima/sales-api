@@ -1,4 +1,4 @@
-import { IndirectAccessError } from 'src/errors/IndirectAccessError';
+import { IndirectAccessError } from 'src/errors';
 import type { Session } from '../types/Session';
 
 /**

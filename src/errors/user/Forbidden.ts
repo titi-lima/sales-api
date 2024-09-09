@@ -1,4 +1,4 @@
-import { HttpException } from './shared/HttpException';
+import { HttpException } from '../shared/HttpException';
 
 export class ForbiddenError extends HttpException {
   constructor(message: string = 'Forbidden.') {

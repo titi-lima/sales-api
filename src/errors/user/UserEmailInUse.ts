@@ -1,4 +1,4 @@
-import { HttpException } from './shared/HttpException';
+import { HttpException } from '../shared/HttpException';
 
 export class UserEmailInUseError extends HttpException {
   constructor(message: string = 'Email already in use.') {

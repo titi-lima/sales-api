@@ -1,6 +1,5 @@
 import type { IUpdateUserWhereDTO, IUpdateUserDTO } from '@DTOs';
-import { UserEmailInUseError } from 'src/errors/UserEmailInUse';
-import { UserNotFoundError } from 'src/errors/UserNotFound';
+import { UserEmailInUseError, UserNotFoundError } from 'src/errors';
 import type { IUserRepository } from 'src/infra/data-access/interfaces/UserRepository';
 
 export class UpdateUserUseCase {
