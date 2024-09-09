@@ -3,6 +3,6 @@ import { type Session } from 'src/shared/types/Session';
 
 export type AuthRouteResponse = Response & {
   locals: Response['locals'] & {
-    session?: Session;
+    session: Session;
   };
 };

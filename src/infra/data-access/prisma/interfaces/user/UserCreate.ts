@@ -1,5 +1,5 @@
 import type { Prisma, User } from '@prisma/client';
-import type { StrictOmit } from 'src/shared/types/Exact';
+import type { StrictOmit } from 'src/shared/types/StrictOmit';
 
 export namespace IUserCreate {
   /**
