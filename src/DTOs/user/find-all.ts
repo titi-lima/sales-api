@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const FindAllUserWhereDTO = z.object({
   name: z.string().optional(),
-  email: z.string().email().optional(),
+  email: z.string().optional(), // since we are using "contains" at the query level, we do not need to validate the email.
   limit: z.number({ invalid_type_error: 'Limit must be a number' }).optional(),
   offset: z
     .number({ invalid_type_error: 'Offset must be a number' })
