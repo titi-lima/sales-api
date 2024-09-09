@@ -1,7 +1,6 @@
 import { type ICreateUserDTO } from '@DTOs';
 import { UserAlreadyExistsError } from 'src/errors/UserAlreadyExists';
 import type { IUserRepository } from 'src/infra/data-access/interfaces/UserRepository';
-import { hashPassword } from 'src/lib/bcrypt/hash';
 
 export class CreateUserUseCase {
   constructor(private userRepository: IUserRepository) {
@@ -15,11 +14,9 @@ export class CreateUserUseCase {
       throw new UserAlreadyExistsError();
     }
 
-    const hashedPassword = await hashPassword(input.password);
-
     const user = await this.userRepository.create({
       email: input.email,
-      password: hashedPassword,
+      password: input.password, // password is hashed in the DTO
       Client: {
         create: {
           name: input.name,
