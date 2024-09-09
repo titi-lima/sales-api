@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { ForbiddenError } from 'src/errors/Forbidden';
+import { ForbiddenError } from 'src/errors';
 import { parseAuth } from 'src/shared/utils/parseAuth';
 
 export function adminAuth(req: Request, res: Response, next: NextFunction) {

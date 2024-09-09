@@ -1,5 +1,5 @@
 import { type ILoginDTO } from '@DTOs';
-import { InvalidCredentialsError } from 'src/errors/InvalidCredentials';
+import { InvalidCredentialsError } from 'src/errors';
 import type { IUserRepository } from 'src/infra/data-access/interfaces/UserRepository';
 import { comparePassword } from 'src/lib/bcrypt/compare';
 import { generateAccessToken } from 'src/lib/jwt/generateAccessToken';

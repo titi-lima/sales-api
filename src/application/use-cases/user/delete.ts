@@ -1,5 +1,5 @@
 import { type IDeleteUserWhereDTO } from '@DTOs';
-import { UserNotFoundError } from 'src/errors/UserNotFound';
+import { UserNotFoundError } from 'src/errors';
 import type { IUserRepository } from 'src/infra/data-access/interfaces/UserRepository';
 
 export class DeleteUserUseCase {

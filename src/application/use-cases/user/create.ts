@@ -1,5 +1,5 @@
 import { type ICreateUserDTO } from '@DTOs';
-import { UserAlreadyExistsError } from 'src/errors/UserAlreadyExists';
+import { UserAlreadyExistsError } from 'src/errors';
 import type { IUserRepository } from 'src/infra/data-access/interfaces/UserRepository';
 
 export class CreateUserUseCase {
@@ -11,6 +11,7 @@ export class CreateUserUseCase {
     const existingUser = await this.userRepository.findByEmail(input.email);
 
     if (existingUser) {
+      console.log(existingUser);
       throw new UserAlreadyExistsError();
     }
 
