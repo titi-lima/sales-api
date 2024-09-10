@@ -10,7 +10,7 @@ import type { Session } from '../types/Session';
 
 export const verifyAllowedUserAccess = (
   session: Session,
-  userId: string | null,
+  userId?: string | null,
 ) => {
   if (session.type === 'ADMIN') return;
   if (session.id !== userId) {

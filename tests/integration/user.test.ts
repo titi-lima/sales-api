@@ -127,7 +127,6 @@ describe('User', () => {
   it('should not be able to delete a user you do not own', async () => {
     const user = await createAndAuthenticateUser();
     const otherUser = await request(app).post('/users').send(MOCK_USERS[1]);
-    console.log(otherUser.body);
     const response = await request(app)
       .delete(`/users/${otherUser.body.data.id}`)
       .set('Authorization', `Bearer ${user.accessToken}`);

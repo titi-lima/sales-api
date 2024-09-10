@@ -51,6 +51,7 @@ export class PrismaOrderRepository implements IOrderRepository {
         id,
       },
       include: {
+        client: true,
         orderProducts: true,
       },
     });
@@ -70,15 +71,20 @@ export class PrismaOrderRepository implements IOrderRepository {
     });
   }
 
-  findByClient(
+  findByUser(
     input: IOrderFindByClient.Input,
   ): Promise<IOrderFindByClient.Output | null> {
     return this.prisma.order.findFirst({
       where: {
-        clientId: input,
+        client: {
+          user: {
+            id: input,
+          },
+        },
         status: 'CART',
       },
       include: {
+        client: true,
         orderProducts: true,
       },
     });

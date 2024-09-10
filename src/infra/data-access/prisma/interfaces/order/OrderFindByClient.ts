@@ -1,6 +1,8 @@
-import type { Prisma, Order, OrderProduct } from '@prisma/client';
+import type { Prisma, Order, OrderProduct, Client } from '@prisma/client';
 
 export namespace IOrderFindByClient {
-  export type Input = Prisma.OrderWhereInput['clientId'];
-  export type Output = Order & { orderProducts: OrderProduct[] | null };
+  export type Input = string;
+  export type Output = Order & { orderProducts: OrderProduct[] | null } & {
+    client: Client | null;
+  };
 }

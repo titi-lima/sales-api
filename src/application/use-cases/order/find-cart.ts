@@ -9,12 +9,12 @@ export class FindCartUseCase {
   }
 
   async execute(session: Session) {
-    const order = await this.orderRepository.findByClient(session.id);
+    const order = await this.orderRepository.findByUser(session.id);
     if (!order) {
       throw new OrderNotFoundError();
     }
 
-    verifyAllowedUserAccess(session, order.clientId);
+    verifyAllowedUserAccess(session, order.client?.userId);
 
     return order;
   }

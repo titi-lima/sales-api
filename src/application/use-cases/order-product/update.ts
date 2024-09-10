@@ -7,7 +7,6 @@ import type { IOrderProductRepository } from 'src/infra/data-access/interfaces/O
 import type { IOrderRepository } from 'src/infra/data-access/interfaces/OrderRepository';
 import type { IProductRepository } from 'src/infra/data-access/interfaces/ProductRepository';
 import type { Session } from 'src/shared/types/Session';
-import { verifyAllowedUserAccess } from 'src/shared/utils/verifyAllowedUserMutation';
 
 export class UpdateOrderProductUseCase {
   constructor(
@@ -31,7 +30,7 @@ export class UpdateOrderProductUseCase {
   }) {
     const [existingOrderProduct, existingOrder] = await Promise.all([
       this.orderProductRepository.findById(where.orderProductId),
-      this.orderRepository.findByClient(session.id),
+      this.orderRepository.findByUser(session.id),
     ]);
 
     if (!existingOrderProduct) {
@@ -43,8 +42,6 @@ export class UpdateOrderProductUseCase {
       // therefore this will only run if a user is trying to access a product that does not belong to their order.
       throw new IndirectAccessError();
     }
-
-    verifyAllowedUserAccess(session, existingOrder.clientId);
 
     const subtotal =
       (input.quantity ?? existingOrderProduct.quantity) *
@@ -59,8 +56,7 @@ export class UpdateOrderProductUseCase {
         order: {
           update: {
             totalPrice: {
-              decrement: existingOrderProduct.subtotal,
-              increment: subtotal,
+              increment: subtotal - existingOrderProduct.subtotal.toNumber(),
             },
           },
         },

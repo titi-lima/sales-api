@@ -50,6 +50,11 @@ export class PrismaOrderProductRepository implements IOrderProductRepository {
       },
       include: {
         product: true,
+        order: {
+          include: {
+            client: true,
+          },
+        },
       },
     });
   }

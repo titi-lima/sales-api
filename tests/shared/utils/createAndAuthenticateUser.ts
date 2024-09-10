@@ -1,9 +1,8 @@
 import request from 'supertest';
 import app from '../../../src/app';
 import type { ICreateUserDTO } from '../../../src/DTOs/user/create';
-import type { IUserCreate } from '../../../src/infra/data-access/prisma/interfaces/user/UserCreate';
 
-type Return = IUserCreate.Input & { accessToken: string };
+type Return = { id: string; accessToken: string };
 
 export const createAndAuthenticateUser = async (
   user?: ICreateUserDTO,

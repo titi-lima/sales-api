@@ -16,7 +16,7 @@ export class DeleteOrderUseCase {
       throw new OrderNotFoundError();
     }
 
-    verifyAllowedUserAccess(session, isExistingOrder.id);
+    verifyAllowedUserAccess(session, isExistingOrder.client?.userId);
 
     await this.orderRepository.delete({
       id: where.id,

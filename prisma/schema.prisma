@@ -72,7 +72,7 @@ enum ORDER_STATUS {
 
 model Order {
   id         String       @id @default(cuid())
-  status     ORDER_STATUS @default(PENDING)
+  status     ORDER_STATUS @default(CART)
   totalPrice Decimal      @db.Money
 
   clientId      String?

@@ -95,7 +95,7 @@ export class UpdateOrderUseCase {
       throw new OrderNotFoundError();
     }
 
-    verifyAllowedUserAccess(session, isExistingOrder.clientId);
+    verifyAllowedUserAccess(session, isExistingOrder.client?.userId);
 
     // cart -> received is the signal that confirms the order
     const shouldCheckout =

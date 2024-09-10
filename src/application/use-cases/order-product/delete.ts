@@ -18,7 +18,10 @@ export class DeleteOrderProductUseCase {
       throw new OrderProductNotFoundError();
     }
 
-    verifyAllowedUserAccess(session, isExistingOrderProduct.id);
+    verifyAllowedUserAccess(
+      session,
+      isExistingOrderProduct.order.client?.userId,
+    );
 
     await this.orderProductRepository.delete({
       id: where.orderProductId,

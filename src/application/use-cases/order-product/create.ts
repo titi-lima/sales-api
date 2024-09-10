@@ -25,7 +25,7 @@ export class CreateOrderProductUseCase {
     session: Session;
   }) {
     const [existingOrder, product] = await Promise.all([
-      this.orderRepository.findByClient(session.id),
+      this.orderRepository.findByUser(session.id),
       this.productRepository.findById(input.productId),
     ]);
 
@@ -38,7 +38,7 @@ export class CreateOrderProductUseCase {
         totalPrice: input.quantity * product.price.toNumber(),
         client: {
           connect: {
-            id: session.id,
+            userId: session.id,
           },
         },
         orderProducts: {
@@ -56,7 +56,7 @@ export class CreateOrderProductUseCase {
       });
     }
 
-    verifyAllowedUserAccess(session, existingOrder.clientId);
+    verifyAllowedUserAccess(session, existingOrder.client?.userId);
 
     return this.orderRepository.update(
       {

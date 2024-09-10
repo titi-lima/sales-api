@@ -17,7 +17,7 @@ export interface IOrderRepository {
     input: IOrderFindAll.Input,
     { limit, offset }: IOrderFindAll.Options,
   ) => Promise<IOrderFindAll.Output[]>;
-  findByClient: (
+  findByUser: (
     input: IOrderFindByClient.Input,
   ) => Promise<IOrderFindByClient.Output | null>;
 }

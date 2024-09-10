@@ -19,4 +19,28 @@ export const MOCK_PRODUCT: ICreateProductDTO[] = [
     price: 100,
     quantity: 0,
   },
+  {
+    name: 'Copa do Nordeste Trophy',
+    description: 'Copa do Nordeste Trophy',
+    price: 100,
+    quantity: 1,
+  },
+  {
+    name: 'Copa do Nordeste Medal',
+    description: 'Copa do Nordeste Medal',
+    price: 100,
+    quantity: 1,
+  },
+  {
+    name: 'Fita Azul Trophy',
+    description: 'Fita Azul Trophy',
+    price: 100,
+    quantity: 3,
+  },
+  {
+    name: 'Fita Azul Medal',
+    description: 'Fita Azul Medal',
+    price: 100,
+    quantity: 3,
+  },
 ];

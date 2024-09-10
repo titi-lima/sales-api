@@ -15,7 +15,7 @@ export class FindByIdOrderUseCase {
       throw new OrderNotFoundError();
     }
 
-    verifyAllowedUserAccess(session, order.clientId);
+    verifyAllowedUserAccess(session, order.client?.userId);
 
     return order;
   }
