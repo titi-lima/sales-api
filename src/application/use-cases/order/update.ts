@@ -1,6 +1,5 @@
 import { type IUpdateOrderDTO, type IUpdateOrderWhereDTO } from '@DTOs';
 import { OrderNotFoundError, UnavailableProductError } from 'src/errors';
-import { type IOrderProductRepository } from 'src/infra/data-access/interfaces/OrderProductRepository';
 import type { IOrderRepository } from 'src/infra/data-access/interfaces/OrderRepository';
 import type { IProductRepository } from 'src/infra/data-access/interfaces/ProductRepository';
 import type { IOrderFindById } from 'src/infra/data-access/prisma/interfaces/order/OrderFindById';
@@ -14,12 +13,10 @@ export class UpdateOrderUseCase {
     private orderRepository: IOrderRepository,
     private productRepository: IProductRepository,
     private paymentService: PaymentService,
-    private orderProductRepository: IOrderProductRepository,
   ) {
     this.orderRepository = orderRepository;
     this.productRepository = productRepository;
     this.paymentService = paymentService;
-    this.orderProductRepository = orderProductRepository;
   }
 
   private getUnavailableProducts(order: IProductUpdate.Output[]) {
