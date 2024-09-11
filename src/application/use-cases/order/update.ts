@@ -105,7 +105,10 @@ export class UpdateOrderUseCase {
       await this.handleConfirmation(isExistingOrder);
     }
 
-    const order = await this.orderRepository.update(where, input);
+    const order = await this.orderRepository.update(where, {
+      ...input,
+      orderedAt: shouldCheckout ? new Date() : undefined,
+    });
 
     return order;
   }

@@ -4,6 +4,9 @@ import { userSchema } from './schemas/user';
 import { userPath } from './paths/users';
 import { productSchema } from './schemas/product';
 import { productPath } from './paths/products';
+import { orderSchema } from './schemas/order';
+import { orderPath } from './paths/order';
+import { cartPath } from './paths/cart';
 
 export default {
   openapi: '3.1.0',
@@ -22,11 +25,14 @@ export default {
     ...sessionPath,
     ...userPath,
     ...productPath,
+    ...orderPath,
+    ...cartPath,
   },
   components: {
     schemas: {
       userSchema,
       productSchema,
+      orderSchema,
     },
     securitySchemes: {
       bearerAuth: {
