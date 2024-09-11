@@ -6,7 +6,7 @@ const OrderRouter = Router();
 
 OrderRouter.get('/', [auth], OrderController.findAll);
 
-OrderRouter.put('/:id', [auth], OrderController.update);
+OrderRouter.patch('/:id', [auth], OrderController.update);
 
 OrderRouter.delete('/:id', [auth], OrderController.delete);
 
