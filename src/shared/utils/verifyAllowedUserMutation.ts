@@ -8,7 +8,10 @@ import type { Session } from '../types/Session';
  * @throws {IndirectAccessError} if the session id is not the same as the user id
  */
 
-export const verifyAllowedUserAccess = (session: Session, userId: string) => {
+export const verifyAllowedUserAccess = (
+  session: Session,
+  userId?: string | null,
+) => {
   if (session.type === 'ADMIN') return;
   if (session.id !== userId) {
     throw new IndirectAccessError();

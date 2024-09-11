@@ -7,3 +7,7 @@ export * from './user/UserAlreadyExists';
 export * from './user/UserEmailInUse';
 export * from './user/UserNotFound';
 export * from './product/ProductNotFound';
+export * from './order/OrderNotFoundError';
+export * from './order/UnavailableProductError';
+export * from './order/FailedPaymentError';
+export * from './order-product/OrderProductNotFoundError';

@@ -1,0 +1,6 @@
+-- AlterEnum
+ALTER TYPE "ORDER_STATUS" ADD VALUE 'CART';
+
+-- AlterTable
+ALTER TABLE "orders" ALTER COLUMN "ordered_at" DROP NOT NULL,
+ALTER COLUMN "ordered_at" DROP DEFAULT;
