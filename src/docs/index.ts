@@ -18,10 +18,15 @@ export default {
     version: '0.0.1',
   },
   servers: [
-    {
-      url: 'http://localhost:3001',
-      description: 'Local Server',
-    },
+    process.env.NODE_ENV === 'production'
+      ? {
+          url: 'http://titi.ip-dynamic.org/',
+          description: 'Production Server',
+        }
+      : {
+          url: 'http://localhost:3001',
+          description: 'Local Server',
+        },
   ],
   paths: {
     ...sessionPath,
