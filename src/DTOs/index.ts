@@ -16,3 +16,8 @@ export * from './order/find-by-id';
 export * from './order-product/create';
 export * from './order-product/update';
 export * from './order-product/delete';
+export * from './sales-report/create';
+export * from './sales-report/update';
+export * from './sales-report/delete';
+export * from './sales-report/find-all';
+export * from './sales-report/find-by-id';

@@ -2,6 +2,7 @@ import { type IOrderProductCreate } from 'src/infra/data-access/prisma/interface
 import { type IOrderProductUpdate } from '../prisma/interfaces/order-product/OrderProductUpdate';
 import { type IOrderProductDelete } from '../prisma/interfaces/order-product/OrderProductDelete';
 import { type IOrderProductFindById } from '../prisma/interfaces/order-product/OrderProductFindById';
+import { type IOrderProductFindAll } from '../prisma/interfaces/order-product/OrderProductFindAll';
 
 export interface IOrderProductRepository {
   create: (
@@ -17,4 +18,7 @@ export interface IOrderProductRepository {
   findById: (
     id: IOrderProductFindById.Input,
   ) => Promise<IOrderProductFindById.Output | null>;
+  findAll: (
+    input: IOrderProductFindAll.Input,
+  ) => Promise<IOrderProductFindAll.Output>;
 }

@@ -11,3 +11,4 @@ export * from './order/OrderNotFoundError';
 export * from './order/UnavailableProductError';
 export * from './order/FailedPaymentError';
 export * from './order-product/OrderProductNotFoundError';
+export * from './sales-report/SalesReportNotFoundError';

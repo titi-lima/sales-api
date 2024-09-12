@@ -4,7 +4,8 @@ import { type IOrderProductRepository } from '../../interfaces/OrderProductRepos
 import { type IOrderProductDelete } from '../interfaces/order-product/OrderProductDelete';
 import { type IOrderProductUpdate } from '../interfaces/order-product/OrderProductUpdate';
 import { type IOrderProductCreate } from '../interfaces/order-product/OrderProductCreate';
-import { IOrderProductFindById } from '../interfaces/order-product/OrderProductFindById';
+import { type IOrderProductFindById } from '../interfaces/order-product/OrderProductFindById';
+import { type IOrderProductFindAll } from '../interfaces/order-product/OrderProductFindAll';
 
 export class PrismaOrderProductRepository implements IOrderProductRepository {
   private prisma: PrismaClient;
@@ -56,6 +57,14 @@ export class PrismaOrderProductRepository implements IOrderProductRepository {
           },
         },
       },
+    });
+  }
+
+  findAll(
+    input: IOrderProductFindAll.Input,
+  ): Promise<IOrderProductFindAll.Output> {
+    return this.prisma.orderProduct.findMany({
+      where: input,
     });
   }
 }

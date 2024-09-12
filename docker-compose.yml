@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: dev.Dockerfile
+      args:
+        - DATABASE_URL=${DATABASE_URL}
     image: nodejs-server
     container_name: ${PROJECT_NAME}-server
     restart: unless-stopped

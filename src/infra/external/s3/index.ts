@@ -1,9 +1,9 @@
 import {
   PutObjectCommandInput,
-  PutObjectAclCommand,
   S3,
   DeleteObjectCommand,
   GetObjectCommand,
+  PutObjectCommand,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
@@ -19,7 +19,7 @@ export class FileService {
         accessKeyId: process.env.S3_KEY,
         secretAccessKey: process.env.S3_SECRET,
       },
-      region: process.env.S3_ENDPOINT.split('.')[2],
+      region: process.env.S3_ENDPOINT.split('.')[1],
     });
   }
 
@@ -28,14 +28,11 @@ export class FileService {
       Bucket: process.env.S3_BUCKET,
       Key,
       Body,
-      ACL: 'private',
     } as const;
 
-    await this.s3.send(new PutObjectAclCommand(params));
+    await this.s3.send(new PutObjectCommand(params));
 
-    return `https://${process.env.S3_BUCKET}.${
-      process.env.S3_ENDPOINT
-    }/${encodeURI(Key)}`;
+    return encodeURI(Key);
   }
 
   async getFile(key: string) {
