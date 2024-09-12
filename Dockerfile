@@ -19,7 +19,9 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN pnpm generate --generator client
+ARG DATABASE_URL
+
+RUN pnpm generate --generator client --sql
 
 COPY --chown=node:node . .
 

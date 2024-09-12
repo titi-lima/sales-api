@@ -20,7 +20,7 @@ export class UpdateOrderUseCase {
   }
 
   private getUnavailableProducts(order: IProductUpdate.Output[]) {
-    return order.filter((product) => product.quantity < 1);
+    return order.filter((product) => product.quantity < 0);
   }
 
   private decrementQuantity(order: IOrderFindById.Output) {

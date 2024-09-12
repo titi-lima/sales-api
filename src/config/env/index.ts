@@ -5,6 +5,10 @@ const envSchema = z.object({
   SERVER_PORT: z.coerce.number().default(3001),
   NODE_ENV: z.enum(['development', 'production', 'test']),
   JWT_ACCESS_SECRET: z.string(),
+  S3_ENDPOINT: z.string(),
+  S3_KEY: z.string(),
+  S3_SECRET: z.string(),
+  S3_BUCKET: z.string(),
 
   DATABASE_URL: z.string(),
 });
