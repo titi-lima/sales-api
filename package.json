@@ -38,10 +38,11 @@
     "migration:reset": "cross-env DATABASE_HOST='localhost' prisma migrate reset --force",
     "studio": "cross-env DATABASE_HOST='localhost' prisma studio",
     "generate": "cross-env DATABASE_HOST='localhost' prisma generate",
+    "generate:ci": "cross-env DATABASE_URL='postgres://postgres:postgres@localhost:5432/postgres' prisma db push && cross-env DATABASE_URL='postgres://postgres:postgres@localhost:5432/postgres' prisma generate --sql",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
     "push": "cross-env DATABASE_HOST='localhost' prisma db push",
-    "test:ci": "cross-env DATABASE_URL='postgres://postgres:postgres@localhost:5432/postgres' prisma db push && cross-env DATABASE_URL='postgres://postgres:postgres@localhost:5432/postgres' JWT_ACCESS_SECRET=secret jest --runInBand --ci",
+    "test:ci": "cross-env DATABASE_URL='postgres://postgres:postgres@localhost:5432/postgres' prisma db push && cross-env DATABASE_URL='postgres://postgres:postgres@localhost:5432/postgres' prisma generate --sql && cross-env DATABASE_URL='postgres://postgres:postgres@localhost:5432/postgres' JWT_ACCESS_SECRET=secret jest --runInBand --ci",
     "test": "cross-env DATABASE_URL='postgres://postgres:docker@localhost:5433/sales-test' prisma db push && cross-env DATABASE_URL='postgres://postgres:docker@localhost:5433/sales-test' jest --runInBand",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },

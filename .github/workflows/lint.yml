@@ -9,6 +9,16 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - uses: actions/checkout@v3
@@ -24,7 +34,7 @@ jobs:
 
         # Generate prisma client
       - name: Generate prisma client
-        run: yarn generate
+        run: yarn generate:ci
 
       # Runs the lint script
       - name: Run the lint Script
@@ -32,7 +42,7 @@ jobs:
 
       # Runs the typecheck script
       - name: Run the typecheck Script
-        run: yarn generate && yarn typecheck
+        run: yarn typecheck
 
       # Runs the build script
       - name: Run the build Script
