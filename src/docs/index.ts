@@ -7,6 +7,8 @@ import { productPath } from './paths/products';
 import { orderSchema } from './schemas/order';
 import { orderPath } from './paths/order';
 import { cartPath } from './paths/cart';
+import { salesReportPath } from './paths/sales-report';
+import { salesReportSchema } from './schemas/sales-report';
 
 export default {
   openapi: '3.1.0',
@@ -27,12 +29,14 @@ export default {
     ...productPath,
     ...orderPath,
     ...cartPath,
+    ...salesReportPath,
   },
   components: {
     schemas: {
       userSchema,
       productSchema,
       orderSchema,
+      salesReportSchema,
     },
     securitySchemes: {
       bearerAuth: {
