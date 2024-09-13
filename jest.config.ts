@@ -30,10 +30,7 @@ export default {
   //   "/node_modules/"
   // ],
 
-  testMatch: [
-    '<rootDir>/tests/unit/*.test.ts',
-    '<rootDir>/tests/integration/*.test.ts',
-  ],
+  testMatch: ['<rootDir>/**/?(*.)+(spec|test).[tj]s?(x)'],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: 'v8',
@@ -140,7 +137,7 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['dotenv/config'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
