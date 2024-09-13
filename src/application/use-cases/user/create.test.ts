@@ -15,10 +15,16 @@ describe('CreateUserUseCase', () => {
     findById: jest.fn(),
     findAll: jest.fn(),
   });
+  const mockMailService = () => ({
+    sendMail: jest.fn(),
+  });
 
   beforeEach(() => {
     userRepository = mockUserRepository();
-    createUserUseCase = new CreateUserUseCase(userRepository);
+    createUserUseCase = new CreateUserUseCase(
+      userRepository,
+      mockMailService() as any,
+    );
   });
 
   it('should create a user successfully', async () => {
@@ -51,6 +57,7 @@ describe('CreateUserUseCase', () => {
       Client: {
         create: {
           name: input.name,
+          status: 'INACTIVE',
           contact: input.contact,
           address: input.address,
         },

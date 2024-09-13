@@ -6,7 +6,12 @@ import app from '../../src/app';
 import { connection } from '../shared/config/database.config';
 import { createAndAuthenticateAdmin } from '../shared/utils/createAndAuthenticateAdmin';
 import { MOCK_USERS } from '../shared/constants/user';
-
+// mock mail service
+jest.mock('../../src/lib/nodemailer/mailer', () => ({
+  MailService: jest.fn().mockImplementation(() => ({
+    sendMail: jest.fn().mockResolvedValue(true),
+  })),
+}));
 // you need to be running the back-end for this test to work
 // because it tests the database (run "docker-compose up")
 
