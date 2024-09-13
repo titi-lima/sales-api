@@ -5,6 +5,7 @@ import {
   FindByIdUserWhereDTO,
   UpdateUserDTO,
   UpdateUserWhereDTO,
+  VerifyEmailDTO,
 } from '@DTOs';
 import type { NextFunction, Request, Response } from 'express';
 import { makeCreateUserUseCase } from 'src/application/factories/user/create';
@@ -13,6 +14,7 @@ import { makeFindAllUserUseCase } from 'src/application/factories/user/find-all'
 import { makeFindByIdUserUseCase } from 'src/application/factories/user/find-by-id';
 import { makeUpdateUserUseCase } from 'src/application/factories/user/update';
 import { verifyAllowedUserAccess } from 'src/shared/utils/verifyAllowedUserMutation';
+import { makeVerifyEmailUseCase } from 'src/application/factories/user/verify-email';
 import { type AuthRouteResponse } from '../types/AuthResponse';
 
 export class UserController {
@@ -141,6 +143,25 @@ export class UserController {
         message: 'User deleted successfully.',
         status: 200,
         session: res.locals.session,
+      };
+
+      return next();
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  static async verifyEmail(req: Request, res: Response, next: NextFunction) {
+    try {
+      const data = VerifyEmailDTO.parse(req.params);
+
+      const verifyEmailUseCase = makeVerifyEmailUseCase();
+
+      await verifyEmailUseCase.execute(data);
+
+      res.locals = {
+        message: 'Email verified successfully.',
+        status: 200,
       };
 
       return next();

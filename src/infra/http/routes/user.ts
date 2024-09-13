@@ -10,5 +10,6 @@ UserRouter.get('/', [adminAuth], UserController.findAll);
 UserRouter.get('/:id', [auth], UserController.findById);
 UserRouter.patch('/:id', [auth], UserController.update);
 UserRouter.delete('/:id', [auth], UserController.delete);
+UserRouter.get('/:id/verify-email', UserController.verifyEmail);
 
 export default UserRouter;
